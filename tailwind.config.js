@@ -15,16 +15,32 @@ module.exports = {
       pop: ["Poppins", "sans-serif"],
     },
     screens: {
-      menuRangeSmall: { min: "0px", max: "664px" },
-      menuRangeBig: { min: "665px", max: "980px" },
-      desktop: "980px",
+      "2xl": { max: "1152px" },
+      "footer-1103px": { max: "1103px" },
+      "mobile-500px": { max: "500px" },
+      // => @media (max-width: 1535px) { ... }
+
+      xl: { max: "1279px" },
+      // => @media (max-width: 1279px) { ... }
+
+      lg: { max: "1023px" },
+      // => @media (max-width: 1023px) { ... }
+
+      md: { max: "767px" },
+      // => @media (max-width: 767px) { ... }
+
+      sm: { max: "639px" },
+      // => @media (max-width: 639px) { ... }
     },
     extend: {
       bgGradientDeg: {
         main: "107.56deg",
       },
       padding: {
+        "60px": "60px",
         "56px": "56px",
+        "32px": "32px",
+        "16px": "16px",
       },
       spacing: {
         "48px": "48px",
@@ -43,6 +59,7 @@ module.exports = {
         "118px": "118px",
         "52px": "52px",
         "30px": "30px",
+        "16px": "16px",
       },
       colors: {
         "cs-primary-100": "#306099",
