@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "components/header/Header";
+import Footer from "components/footer/Footer";
 
 const DefaultLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -10,6 +11,7 @@ const DefaultLayout: React.FC<{ children: React.ReactNode }> = ({
         <Header />
       </div>
       <div className="mt-118px">{children}</div>
+      <Footer />
     </div>
   );
 };
