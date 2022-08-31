@@ -6,8 +6,10 @@ module.exports = {
     },
     fontSize: {
       "14px": "14px",
+      "18px": "18px",
     },
     lineHeight: {
+      "23px": "23px",
       "21px": "21px",
       "18px": "18px",
     },
@@ -40,7 +42,9 @@ module.exports = {
         "16px": "16px",
       },
       spacing: {
-        "48px": "48px",
+        "26px": "26px",
+        "22px": "22px",
+        "16px": "16px",
       },
       height: {
         "118px": "118px",
