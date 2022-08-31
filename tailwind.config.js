@@ -2,7 +2,7 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     borderRadius: {
-      "11px": "11px",
+      "5px": "5px",
     },
     fontSize: {
       "14px": "14px",
@@ -18,19 +18,7 @@ module.exports = {
       "2xl": { max: "1152px" },
       "footer-1103px": { max: "1103px" },
       "mobile-500px": { max: "500px" },
-      // => @media (max-width: 1535px) { ... }
-
-      xl: { max: "1279px" },
-      // => @media (max-width: 1279px) { ... }
-
-      lg: { max: "1023px" },
-      // => @media (max-width: 1023px) { ... }
-
-      md: { max: "767px" },
-      // => @media (max-width: 767px) { ... }
-
-      sm: { max: "639px" },
-      // => @media (max-width: 639px) { ... }
+      "mobile-645px": { max: "645px" },
     },
     extend: {
       bgGradientDeg: {
@@ -40,6 +28,15 @@ module.exports = {
         "60px": "60px",
         "56px": "56px",
         "32px": "32px",
+        "24px": "24px",
+        "18px": "18px",
+        "16px": "16px",
+      },
+      margin: {
+        "140px": "140px",
+        "118px": "118px",
+        "52px": "52px",
+        "30px": "30px",
         "16px": "16px",
       },
       spacing: {
@@ -47,25 +44,18 @@ module.exports = {
       },
       height: {
         "118px": "118px",
-      },
-      maxHeight: {
-        "192px": "192px",
+        "70px": "70px",
+        "45px": "45px",
       },
       width: {
         "1152px": "1152px",
+        "384px": "384px",
         "584px": "584px",
-      },
-      margin: {
-        "118px": "118px",
-        "52px": "52px",
-        "30px": "30px",
-        "16px": "16px",
       },
       colors: {
         "cs-primary-100": "#306099",
         "cs-primary-200": "#58B368",
-        "cs-gradient-primary":
-          "linear-gradient(107.56deg, #306099 0%, #58B368 100%)",
+        "cs-secondary-100": "#E5E5E5",
       },
     },
   },
