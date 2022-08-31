@@ -1,14 +1,17 @@
+const process = require("process");
+
 module.exports = {
-  stories: [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-  ],
+  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    // Add PostCSS into addons for compiling tailwind below
+    "storybook-css-modules-preset",
     {
+      /**
+       * Fix Storybook issue with PostCSS@8
+       * @see https://github.com/storybookjs/storybook/issues/12668#issuecomment-773958085
+       */
       name: "@storybook/addon-postcss",
       options: {
         postcssLoaderOptions: {
@@ -16,10 +19,17 @@ module.exports = {
         },
       },
     },
-    // End PostCSS
   ],
   framework: "@storybook/react",
   core: {
     builder: "@storybook/builder-webpack5",
+  },
+  webpackFinal: (config) => {
+    config.resolve.modules.push(process.cwd() + "/node_modules");
+    config.resolve.modules.push(process.cwd() + "/src");
+
+    // this is needed for working w/ linked folders
+    config.resolve.symlinks = false;
+    return config;
   },
 };

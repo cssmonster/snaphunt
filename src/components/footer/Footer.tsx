@@ -1,9 +1,7 @@
 import React from "react";
 import { FbIcon, InIcon, TwIcon, InsIcon } from "components/icon";
 
-const Footer: React.FC<{ isHavingSearchBox?: boolean }> = ({
-  isHavingSearchBox,
-}) => {
+const Footer: React.FC = () => {
   return (
     <div className="flex justify-center items-center bg-gradient-main bg-gradient-to-r from-cs-primary-100 to-cs-primary-200 ">
       <div className="h-118px w-1152px flex justify-between items-center">
