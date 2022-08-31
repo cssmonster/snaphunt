@@ -1,3 +1,5 @@
+import DefaultLayout from "layouts/default-layout/DefaultLayout";
+
 export default function Home() {
-  return <div></div>;
+  return <DefaultLayout>HOME PAGE</DefaultLayout>;
 }
