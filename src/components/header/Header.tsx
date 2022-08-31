@@ -14,7 +14,7 @@ const Header: React.FC<{ isHavingSearchBox?: boolean }> = ({
           </a>
         </Link>
 
-        {isHavingSearchBox && <div data-testid="search">Header</div>}
+        {isHavingSearchBox && <div data-testid="search">SearchBox</div>}
       </div>
     </div>
   );
