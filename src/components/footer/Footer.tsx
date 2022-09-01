@@ -4,7 +4,7 @@ import { FbIcon, InIcon, TwIcon, InsIcon } from "components/icon";
 const Footer: React.FC = () => {
   return (
     <div className="flex justify-center items-center bg-gradient-main bg-gradient-to-r from-cs-primary-100 to-cs-primary-200 pt-60px pb-60px footer-1103px:pt-32px footer-1103px:pb-32px">
-      <div className="footer-1103px:block 2xl:w-full 2xl:pl-16px 2xl:pr-16px w-1152px flex justify-between items-center">
+      <div className="footer-1103px:block 2xl:w-full 2xl:pl-16px 2xl:pr-16px w-1552px flex justify-between items-center">
         <p
           data-testid="desc"
           className="footer-1103px:w-full w-584px text-white font-pop text-14px leading-18px footer-1103px:mb-16px"

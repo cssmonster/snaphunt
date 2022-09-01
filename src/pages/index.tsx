@@ -1,10 +1,42 @@
 import DefaultLayout from "layouts/default-layout/DefaultLayout";
 import Banner from "components/__pages/home/banner/Banner";
+import VideoCard from "components/video-card/VideoCard";
 
 export default function Home() {
   return (
     <DefaultLayout>
-      <Banner />
+      <div className="mb-30px">
+        <Banner />
+      </div>
+      <div className="flex justify-center items-start">
+        <div className="w-1552px mb-64">
+          <div className="flex flex-wrap justify-between items-start">
+            <div className="w-486px mb-30px">
+              <VideoCard />
+            </div>
+            <div className="w-486px mb-30px">
+              <VideoCard />
+            </div>
+            <div className="w-486px mb-30px">
+              <VideoCard />
+            </div>
+            <div className="w-486px mb-30px">
+              <VideoCard />
+            </div>
+            <div className="w-486px mb-30px">
+              <VideoCard />
+            </div>
+            <div className="w-486px mb-30px">
+              <VideoCard />
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <button className="h-45px w-286px bg-cs-secondary-100 rounded-5px text-black font-pop text-18px leading-24px">
+              View all
+            </button>
+          </div>
+        </div>
+      </div>
     </DefaultLayout>
   );
 }

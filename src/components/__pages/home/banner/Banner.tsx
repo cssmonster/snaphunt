@@ -1,5 +1,4 @@
 import React from "react";
-import { FbIcon, InIcon, TwIcon, InsIcon } from "components/icon";
 
 const Banner: React.FC = () => {
   return (
