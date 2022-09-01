@@ -7,6 +7,10 @@ const DefaultLayout: React.FC<{
   children: React.ReactNode;
   isHavingSearchBox?: boolean;
 }> = ({ children, isHavingSearchBox }) => {
+  const onHandleMoveToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
   return (
     <div>
       <div className="fixed left-0 top-0 w-full">
@@ -14,7 +18,10 @@ const DefaultLayout: React.FC<{
       </div>
       <div className="mobile-645px:mt-140px mt-70px">{children}</div>
       <div className="fixed  right-26px bottom-26px">
-        <button className="w-70px h-70px flex flex-col justify-center items-center">
+        <button
+          onClick={onHandleMoveToTop}
+          className="w-70px h-70px flex flex-col justify-center items-center"
+        >
           <UpIcon />
         </button>
       </div>

@@ -1,5 +1,6 @@
 import DefaultLayout from "layouts/default-layout/DefaultLayout";
 import VideoCard from "components/video-card/VideoCard";
+import Pagination from "components/pagination/Pagination";
 import Link from "next/link";
 
 export default function List() {
@@ -55,9 +56,7 @@ export default function List() {
             </div>
           </div>
           <div className="flex justify-center items-center">
-            <button className="h-45px w-286px bg-cs-secondary-100 rounded-5px text-black font-pop text-18px leading-24px">
-              View all
-            </button>
+            <Pagination />
           </div>
         </div>
       </div>

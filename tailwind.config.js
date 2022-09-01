@@ -2,6 +2,7 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     borderRadius: {
+      "3px": "3px",
       "5px": "5px",
       "10px": "10px",
       max: "100%",
@@ -66,10 +67,13 @@ module.exports = {
         "118px": "118px",
         "70px": "70px",
         "52px": "52px",
+        "47px": "47px",
         "32px": "32px",
         "30px": "30px",
         "24px": "24px",
         "16px": "16px",
+        "8px": "8px",
+        "4px": "4px",
       },
       spacing: {
         "26px": "26px",
@@ -83,6 +87,7 @@ module.exports = {
         "65px": "65px",
         "70px": "70px",
         "45px": "45px",
+        "40px": "40px",
         banner: "calc(100vw * 500 / 1920)",
       },
       width: {
@@ -95,6 +100,7 @@ module.exports = {
         "93px": "93px",
         "70px": "70px",
         "65px": "65px",
+        "40px": "40px",
         half: "calc(50% - 8px)",
         tri: "calc(100% / 3)",
       },

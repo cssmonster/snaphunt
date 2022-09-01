@@ -52,7 +52,7 @@ export default function Home() {
                 <a>
                   <VideoCard />
                 </a>
-              </Link>{" "}
+              </Link>
             </div>
           </div>
           <div className="flex justify-center items-center">
