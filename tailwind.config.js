@@ -92,6 +92,7 @@ module.exports = {
         "cs-primary-300": "#575757",
         "cs-secondary-100": "#E5E5E5",
         "cs-secondary-200": "#38FFBB",
+        "cs-secondary-300": "#309975",
       },
     },
   },
