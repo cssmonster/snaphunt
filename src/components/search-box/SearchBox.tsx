@@ -18,7 +18,7 @@ const SearchBox: React.FC<{
   };
 
   return (
-    <div className="w-full mobile-645px:h-45px h-70px rounded-5px bg-cs-secondary-100 relative overflow-hidden">
+    <div className="w-full mobile-645px:h-45px h-45px rounded-5px bg-cs-secondary-100 relative overflow-hidden">
       <input
         data-testid="input"
         value={internalValue}
