@@ -3,13 +3,14 @@ import Header from "components/header/Header";
 import Footer from "components/footer/Footer";
 import { UpIcon } from "components/icon";
 
-const DefaultLayout: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+const DefaultLayout: React.FC<{
+  children: React.ReactNode;
+  isHavingSearchBox?: boolean;
+}> = ({ children, isHavingSearchBox }) => {
   return (
     <div>
       <div className="fixed left-0 top-0 w-full">
-        <Header />
+        <Header isHavingSearchBox={isHavingSearchBox} />
       </div>
       <div className="mobile-645px:mt-140px mt-70px">{children}</div>
       <div className="fixed  right-26px bottom-26px">

@@ -4,7 +4,7 @@ import { Logo } from "components/icon";
 import SearchBox from "components/search-box/SearchBox";
 
 const Header: React.FC<{ isHavingSearchBox?: boolean }> = ({
-  isHavingSearchBox = true,
+  isHavingSearchBox,
 }) => {
   return (
     <div className="flex justify-center items-center bg-gradient-main bg-gradient-to-r from-cs-primary-100 to-cs-primary-200 ">

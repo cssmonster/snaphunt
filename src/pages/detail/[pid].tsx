@@ -1,6 +1,4 @@
 import DefaultLayout from "layouts/default-layout/DefaultLayout";
-import Banner from "components/__pages/home/banner/Banner";
-import VideoCard from "components/video-card/VideoCard";
 
 export default function List() {
   return (

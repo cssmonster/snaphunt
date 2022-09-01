@@ -32,7 +32,7 @@ const SearchBox: React.FC<{
         <div
           data-testid="clear"
           onClick={onHandleClear}
-          className="flex flex-col justify-center items-center absolute top-26px right-22px mobile-645px:top-16px"
+          className="flex flex-col justify-center items-center absolute top-16px right-22px mobile-645px:top-16px"
         >
           <ClearIcon />
         </div>
