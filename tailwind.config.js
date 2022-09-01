@@ -4,6 +4,7 @@ module.exports = {
     borderRadius: {
       "5px": "5px",
       "10px": "10px",
+      max: "100%",
     },
     fontSize: {
       "48px": "48px",
@@ -16,6 +17,8 @@ module.exports = {
     lineHeight: {
       "72px": "72px",
       "30px": "30px",
+      "27px": "27px",
+      "24px": "24px",
       "24px": "24px",
       "23px": "23px",
       "21px": "21px",
@@ -67,6 +70,7 @@ module.exports = {
       height: {
         "200px": "200px",
         "118px": "118px",
+        "65px": "65px",
         "70px": "70px",
         "45px": "45px",
         banner: "calc(100vw * 500 / 1920)",
@@ -79,6 +83,7 @@ module.exports = {
         "584px": "584px",
         "286px": "286px",
         "70px": "70px",
+        "65px": "65px",
         half: "calc(50% - 8px)",
       },
       colors: {
