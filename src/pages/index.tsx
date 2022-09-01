@@ -9,24 +9,24 @@ export default function Home() {
         <Banner />
       </div>
       <div className="flex justify-center items-start">
-        <div className="w-1552px mb-64">
+        <div className="w-1552px mb-64 2xl:w-full 2xl:pl-16px 2xl:pr-16px">
           <div className="flex flex-wrap justify-between items-start">
-            <div className="w-486px mb-30px">
+            <div className="mobile-645px:w-full 2xl:w-half w-486px mb-30px">
               <VideoCard />
             </div>
-            <div className="w-486px mb-30px">
+            <div className="mobile-645px:w-full 2xl:w-half w-486px mb-30px">
               <VideoCard />
             </div>
-            <div className="w-486px mb-30px">
+            <div className="mobile-645px:w-full 2xl:w-half w-486px mb-30px">
               <VideoCard />
             </div>
-            <div className="w-486px mb-30px">
+            <div className="mobile-645px:w-full 2xl:w-half w-486px mb-30px">
               <VideoCard />
             </div>
-            <div className="w-486px mb-30px">
+            <div className="mobile-645px:w-full 2xl:w-half w-486px mb-30px">
               <VideoCard />
             </div>
-            <div className="w-486px mb-30px">
+            <div className="mobile-645px:w-full 2xl:w-half w-486px mb-30px">
               <VideoCard />
             </div>
           </div>

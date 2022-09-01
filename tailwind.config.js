@@ -79,6 +79,7 @@ module.exports = {
         "584px": "584px",
         "286px": "286px",
         "70px": "70px",
+        half: "calc(50% - 8px)",
       },
       colors: {
         "cs-primary-100": "#306099",
