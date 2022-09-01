@@ -3,7 +3,7 @@ export type PageItem = {
   title: string;
 };
 
-interface IActor {
+export interface IActor {
   id: number;
   name: string;
   characterName: string;

@@ -104,6 +104,7 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
                         bannerUrl={movie.url}
                         title={movie.name}
                         desc={movie.desc}
+                        actors={movie.actors.slice(0, 2)}
                       />
                     </a>
                   </Link>

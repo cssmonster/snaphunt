@@ -1,16 +1,11 @@
 import React from "react";
-
-type Actor = {
-  id: number;
-  name: string;
-  avatar: string;
-};
+import { IActor } from "type";
 
 const VideoCard: React.FC<{
   bannerUrl?: string;
   title?: string;
   desc?: string;
-  actors?: Actor[];
+  actors?: IActor[];
 }> = ({
   bannerUrl = "https://tieudung.kinhtedothi.vn/upload_images/images/2018/05/19/Deadpool-2.jpg",
   title = "Deadpool",
@@ -45,11 +40,11 @@ const VideoCard: React.FC<{
 
       {actors && (
         <div className="flex justify-between items-center">
-          {actors.map((actor: Actor) => (
+          {actors.map((actor: IActor) => (
             <div key={actor.id} className="flex justify-start items-center">
               <div
                 className="rounded-max bg-center bg-no-repeat bg-cover w-65px h-65px "
-                style={{ backgroundImage: `url(${actor.avatar})` }}
+                style={{ backgroundImage: `url(${actor.url})` }}
               ></div>
               <div className="ml-16px font-pop text-18px leading-27px text-black">
                 {actor.name}
