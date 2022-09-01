@@ -10,7 +10,7 @@ export interface IActor {
   url: string;
 }
 
-interface ICategory {
+export interface ICategory {
   id: number;
   title: string;
 }
