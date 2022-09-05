@@ -6,7 +6,8 @@ import SearchBox from "components/search-box/SearchBox";
 const Header: React.FC<{
   isHavingSearchBox?: boolean;
   onHandleGetSearchKeyword?: (val: string) => void;
-}> = ({ isHavingSearchBox, onHandleGetSearchKeyword }) => {
+  initSearchKeyword?: string;
+}> = ({ isHavingSearchBox, onHandleGetSearchKeyword, initSearchKeyword }) => {
   return (
     <div className="flex justify-center items-center bg-gradient-main bg-gradient-to-r from-cs-primary-100 to-cs-primary-200 ">
       <div className="mobile-645px:h-auto mobile-645px:pt-16px mobile-645px:pb-16px mobile-645px:block 2xl:w-full 2xl:pl-16px 2xl:pr-16px h-70px w-1552px flex justify-between items-center">
@@ -22,7 +23,10 @@ const Header: React.FC<{
             data-testid="search"
           >
             <div className="w-384px mobile-645px:w-full">
-              <SearchBox onGetSearchKey={onHandleGetSearchKeyword} />
+              <SearchBox
+                onGetSearchKey={onHandleGetSearchKeyword}
+                initSearchKeyword={initSearchKeyword}
+              />
             </div>
           </div>
         )}

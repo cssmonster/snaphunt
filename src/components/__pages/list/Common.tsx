@@ -17,8 +17,18 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
   const debounceRef = React.useRef<any>(null);
 
   React.useEffect(() => {
-    _getPageList(current);
-    setCurrentPage(current);
+    const keyword = window.location.href.split("=")[1];
+    const pageNumber = window.location.href.split("?")[0].split("/").pop();
+    const isSearchUrl = window.location.href.indexOf("search=") !== -1;
+
+    if (isSearchUrl) {
+      _getSearchList(keyword, Number(pageNumber) ? Number(pageNumber) : 1);
+      setCurrentPage(Number(pageNumber) ? Number(pageNumber) : 1);
+      setSearchkeyword(keyword);
+    } else {
+      _getPageList(current);
+      setCurrentPage(current);
+    }
   }, [current]);
 
   React.useEffect(() => {
@@ -28,40 +38,52 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
   const onHandleClickFirstPage = () => {
     setCurrentPage(1);
     _getPageList(1);
-    searchKeyword === ""
-      ? router.push(`/list/1`)
-      : router.push(`/list/1?search=${searchKeyword}`);
+    router.push(`/list/1`);
   };
 
   const onHandleClickLastPage = () => {
-    setCurrentPage(totalPage);
-    _getPageList(totalPage);
-    searchKeyword === ""
-      ? router.push(`/list/${totalPage}`)
-      : router.push(`/list/${totalPage}?search=${searchKeyword}`);
+    if (searchKeyword === "") {
+      setCurrentPage(totalPage);
+      _getPageList(totalPage);
+      router.push(`/list/${totalPage}`);
+    } else {
+      setCurrentPage(totalPage);
+      _getSearchList(searchKeyword, totalPage);
+      router.push(`/list/${totalPage}?search=${searchKeyword}`);
+    }
   };
 
   const onHandleClickPage = (page: number) => {
-    setCurrentPage(page);
-    _getPageList(page);
-    searchKeyword === ""
-      ? router.push(`/list/${page}`)
-      : router.push(`/list/${page}?search=${searchKeyword}`);
+    if (searchKeyword === "") {
+      setCurrentPage(page);
+      _getPageList(page);
+      router.push(`/list/${page}`);
+    } else {
+      setCurrentPage(page);
+      _getSearchList(searchKeyword, page);
+      router.push(`/list/${page}?search=${searchKeyword}`);
+    }
   };
 
   const onHandleMovePrevious = () =>
     setCurrentPage((prev) => {
       if (prev <= 1) {
-        _getPageList(1);
-        searchKeyword === ""
-          ? router.push(`/list/1`)
-          : router.push(`/list/1?search=${searchKeyword}`);
+        if (searchKeyword === "") {
+          _getPageList(1);
+          router.push(`/list/1`);
+        } else {
+          _getSearchList(searchKeyword, 1);
+          router.push(`/list/${1}?search=${searchKeyword}`);
+        }
         return 1;
       } else {
-        _getPageList(prev - 1);
-        searchKeyword === ""
-          ? router.push(`/list/${prev - 1}`)
-          : router.push(`/list/${prev - 1}?search=${searchKeyword}`);
+        if (searchKeyword === "") {
+          _getPageList(prev - 1);
+          router.push(`/list/${prev - 1}`);
+        } else {
+          _getSearchList(searchKeyword, prev - 1);
+          router.push(`/list/${prev - 1}?search=${searchKeyword}`);
+        }
         return prev - 1;
       }
     });
@@ -69,16 +91,23 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
   const onHandleMoveNext = () =>
     setCurrentPage((prev) => {
       if (prev >= totalPage) {
-        _getPageList(totalPage);
-        searchKeyword === ""
-          ? router.push(`/list/${totalPage}`)
-          : router.push(`/list/${totalPage}?search=${searchKeyword}`);
+        if (searchKeyword === "") {
+          _getPageList(totalPage);
+          router.push(`/list/${totalPage}`);
+        } else {
+          _getSearchList(searchKeyword, totalPage);
+          router.push(`/list/${totalPage}?search=${searchKeyword}`);
+        }
         return totalPage;
       } else {
-        _getPageList(prev + 1);
-        searchKeyword === ""
-          ? router.push(`/list/${prev + 1}`)
-          : router.push(`/list/${prev + 1}?search=${searchKeyword}`);
+        if (searchKeyword === "") {
+          _getPageList(prev + 1);
+          router.push(`/list/${prev + 1}`);
+        } else {
+          _getSearchList(searchKeyword, prev + 1);
+          router.push(`/list/${prev + 1}?search=${searchKeyword}`);
+        }
+
         return prev + 1;
       }
     });
@@ -97,7 +126,7 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
     _handleUpdateURL(val);
     window.clearTimeout(debounceRef.current);
     debounceRef.current = window.setTimeout(async () => {
-      _getSearchLsit(val);
+      _getSearchList(val, 1);
     }, 500);
   };
 
@@ -134,11 +163,12 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
     setLoading(false);
   };
 
-  const _getSearchLsit = async (keyword: string) => {
+  const _getSearchList = async (keyword: string, pageNumber: number) => {
     setLoading(true);
     try {
       const result = await axios.post("/api/search-movie", {
         keyword: keyword,
+        pageNumber: pageNumber,
       });
       setList(result.data.list);
       setTotalPage(result.data.totalPage);
@@ -150,6 +180,7 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
     <DefaultLayout
       isHavingSearchBox
       onHandleGetSearchKeyword={onHandleGetSearchKeyword}
+      initSearchKeyword={searchKeyword}
     >
       <div className="flex justify-center items-start">
         <div className="w-1552px mb-64 2xl:w-full 2xl:pl-16px 2xl:pr-16px">

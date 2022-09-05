@@ -13,13 +13,18 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const keyword = req.body.keyword;
+    const pageNumber = req.body.pageNumber;
     const filteredWithKeyword = database.filter(
       (movie: IMovie) =>
         movie.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
     );
 
     const pageMovieItems = await fakeDelayTime(
-      _getPageItems(_sortMoviesList(filteredWithKeyword), 1, EACH_PAGE_AMOUNT)
+      _getPageItems(
+        _sortMoviesList(filteredWithKeyword),
+        pageNumber,
+        EACH_PAGE_AMOUNT
+      )
     );
     res.status(200).json({
       list: pageMovieItems,

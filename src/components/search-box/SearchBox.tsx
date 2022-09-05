@@ -4,8 +4,13 @@ import { ClearIcon } from "components/icon";
 const SearchBox: React.FC<{
   onClearCallback?: () => void;
   onGetSearchKey?: (val: string) => void;
-}> = ({ onClearCallback, onGetSearchKey }) => {
-  const [internalValue, setInternalValue] = React.useState("");
+  initSearchKeyword?: string;
+}> = ({ onClearCallback, onGetSearchKey, initSearchKeyword }) => {
+  const [internalValue, setInternalValue] = React.useState(initSearchKeyword);
+
+  React.useEffect(() => {
+    initSearchKeyword && setInternalValue(initSearchKeyword);
+  }, [initSearchKeyword]);
 
   const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInternalValue(e.target.value);

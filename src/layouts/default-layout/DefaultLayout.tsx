@@ -7,7 +7,13 @@ const DefaultLayout: React.FC<{
   children: React.ReactNode;
   isHavingSearchBox?: boolean;
   onHandleGetSearchKeyword?: (val: string) => void;
-}> = ({ children, isHavingSearchBox, onHandleGetSearchKeyword }) => {
+  initSearchKeyword?: string;
+}> = ({
+  children,
+  isHavingSearchBox,
+  onHandleGetSearchKeyword,
+  initSearchKeyword,
+}) => {
   const onHandleMoveToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -18,6 +24,7 @@ const DefaultLayout: React.FC<{
         <Header
           isHavingSearchBox={isHavingSearchBox}
           onHandleGetSearchKeyword={onHandleGetSearchKeyword}
+          initSearchKeyword={initSearchKeyword}
         />
       </div>
       <div className="mobile-645px:mt-140px mt-70px">{children}</div>
