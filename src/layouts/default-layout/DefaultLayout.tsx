@@ -6,7 +6,8 @@ import { UpIcon } from "components/icon";
 const DefaultLayout: React.FC<{
   children: React.ReactNode;
   isHavingSearchBox?: boolean;
-}> = ({ children, isHavingSearchBox }) => {
+  onHandleGetSearchKeyword?: (val: string) => void;
+}> = ({ children, isHavingSearchBox, onHandleGetSearchKeyword }) => {
   const onHandleMoveToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -14,7 +15,10 @@ const DefaultLayout: React.FC<{
   return (
     <div>
       <div className="fixed left-0 top-0 w-full">
-        <Header isHavingSearchBox={isHavingSearchBox} />
+        <Header
+          isHavingSearchBox={isHavingSearchBox}
+          onHandleGetSearchKeyword={onHandleGetSearchKeyword}
+        />
       </div>
       <div className="mobile-645px:mt-140px mt-70px">{children}</div>
       <div className="fixed  right-26px bottom-26px">

@@ -15,6 +15,7 @@ const SearchBox: React.FC<{
   const onHandleClear = () => {
     setInternalValue("");
     onClearCallback && onClearCallback();
+    onGetSearchKey && onGetSearchKey("");
   };
 
   return (

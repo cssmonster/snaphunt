@@ -13,11 +13,16 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
   const [loading, setLoading] = React.useState(false);
   const [totalPage, setTotalPage] = React.useState(0);
   const [currentPage, setCurrentPage] = React.useState(current);
+  const debounceRef = React.useRef<any>(null);
 
   React.useEffect(() => {
     _getPageList(current);
     setCurrentPage(current);
   }, [current]);
+
+  React.useEffect(() => {
+    return () => window.clearTimeout(debounceRef.current);
+  }, []);
 
   const onHandleClickFirstPage = () => {
     setCurrentPage(1);
@@ -63,6 +68,49 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
       }
     });
 
+  const onHandleGetSearchKeyword = (val: string) => {
+    if (val === "") _handleListWithEmptySearchkeyword();
+    else _handleListWithSearchkeyword(val);
+  };
+  const _handleListWithEmptySearchkeyword = () => {
+    _getPageList(1);
+    _handleUpdateURL("");
+  };
+
+  const _handleListWithSearchkeyword = (val: string) => {
+    _handleUpdateURL(val);
+    window.clearTimeout(debounceRef.current);
+    debounceRef.current = window.setTimeout(async () => {
+      setLoading(true);
+      try {
+        const result = await axios.post("/api/search-movie", {
+          keyword: val,
+        });
+        setList(result.data.list);
+        setTotalPage(result.data.totalPage);
+      } catch (err: any) {}
+      setLoading(false);
+    }, 500);
+  };
+
+  const _handleUpdateURL = (val: string) => {
+    if (val === "") {
+      window.history.pushState(
+        { path: window.location.href },
+        "",
+        window.location.href.split("?")[0]
+      );
+    } else {
+      var newurl =
+        window.location.protocol +
+        "//" +
+        window.location.host +
+        window.location.pathname +
+        `?search=${val}`;
+      window.history.pushState({ path: newurl }, "", newurl);
+    }
+  };
+
   const _getPageList = async (current: number) => {
     setLoading(true);
 
@@ -79,7 +127,10 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
   };
 
   return (
-    <DefaultLayout isHavingSearchBox>
+    <DefaultLayout
+      isHavingSearchBox
+      onHandleGetSearchKeyword={onHandleGetSearchKeyword}
+    >
       <div className="flex justify-center items-start">
         <div className="w-1552px mb-64 2xl:w-full 2xl:pl-16px 2xl:pr-16px">
           <div className="pt-60px pb-60px text-center font-pop font-bold cs-secondary-300 text-48px leading-72px text-cs-secondary-300">
@@ -93,37 +144,48 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
 
           {!loading && (
             <div className="flex flex-wrap justify-between items-start">
-              {list.map((movie: IMovie) => (
-                <div
-                  key={movie.id}
-                  className="mobile-645px:w-full 2xl:w-half w-486px mb-30px"
-                >
-                  <Link href={`/detail/${movie.id}`}>
-                    <a>
-                      <VideoCard
-                        bannerUrl={movie.url}
-                        title={movie.name}
-                        desc={movie.desc}
-                        actors={movie.actors.slice(0, 2)}
-                      />
-                    </a>
-                  </Link>
+              {list.length === 0 && (
+                <div className="w-full text-center pt-16px pb-16px font-bold">
+                  NO RESULTS
                 </div>
-              ))}
+              )}
+              {list.length !== 0 && (
+                <>
+                  {list.map((movie: IMovie) => (
+                    <div
+                      key={movie.id}
+                      className="mobile-645px:w-full 2xl:w-half w-486px mb-30px"
+                    >
+                      <Link href={`/detail/${movie.id}`}>
+                        <a>
+                          <VideoCard
+                            bannerUrl={movie.url}
+                            title={movie.name}
+                            desc={movie.desc}
+                            actors={movie.actors.slice(0, 2)}
+                          />
+                        </a>
+                      </Link>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           )}
 
-          <div className="flex justify-center items-center">
-            <Pagination
-              current={currentPage}
-              total={totalPage}
-              onFirst={onHandleClickFirstPage}
-              onLast={onHandleClickLastPage}
-              onClickPage={onHandleClickPage}
-              onMoveLeft={onHandleMovePrevious}
-              onMoveRight={onHandleMoveNext}
-            />
-          </div>
+          {!loading && list.length !== 0 && (
+            <div className="flex justify-center items-center">
+              <Pagination
+                current={currentPage}
+                total={totalPage}
+                onFirst={onHandleClickFirstPage}
+                onLast={onHandleClickLastPage}
+                onClickPage={onHandleClickPage}
+                onMoveLeft={onHandleMovePrevious}
+                onMoveRight={onHandleMoveNext}
+              />
+            </div>
+          )}
         </div>
       </div>
     </DefaultLayout>
