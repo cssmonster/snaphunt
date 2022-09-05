@@ -184,7 +184,7 @@ const CommonList: React.FC<{ current?: number }> = ({ current = 1 }) => {
     >
       <div className="flex justify-center items-start">
         <div className="w-1552px mb-64 2xl:w-full 2xl:pl-16px 2xl:pr-16px">
-          <div className="pt-60px pb-60px text-center font-pop font-bold cs-secondary-300 text-48px leading-72px text-cs-secondary-300">
+          <div className="mobile-645px:text-20px mobile-645px:pb-32px pt-60px pb-60px text-center font-pop font-bold cs-secondary-300 text-48px leading-72px text-cs-secondary-300">
             Movie information hub
           </div>
           {loading && (
