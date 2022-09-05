@@ -139,7 +139,7 @@ const Pagination: React.FC<{
         {list.map((item: PageItem) => (
           <button
             key={item.id}
-            onClick={() => onHandleClickPage(1)}
+            onClick={() => onHandleClickPage(Number(item.title))}
             className={`${
               Number(item.title) === current
                 ? "font-bold border-cs-primary-100 text-cs-primary-100"
@@ -149,11 +149,6 @@ const Pagination: React.FC<{
             {item.title}
           </button>
         ))}
-
-        {/*
-          <button className="mobile-950px:mb-8px w-40px h-40px rounded-3px border flex justify-center items-center ml-4px mr-4px">
-            <Threedot />
-          </button> */}
         <button
           onClick={onHandleMoveRight}
           className="mobile-950px:mb-8px w-40px h-40px rounded-3px border flex justify-center items-center ml-4px mr-4px"

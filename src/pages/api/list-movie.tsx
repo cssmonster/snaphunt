@@ -20,7 +20,7 @@ export default async function handler(
     );
     res.status(200).json({
       list: pageMovieItems,
-      totalPage: Math.round(database.length / EACH_PAGE_AMOUNT),
+      totalPage: Math.ceil(database.length / EACH_PAGE_AMOUNT),
     });
   }
 }
