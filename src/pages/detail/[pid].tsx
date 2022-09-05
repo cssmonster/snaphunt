@@ -25,7 +25,7 @@ export default function List() {
     <DefaultLayout>
       <div className="flex justify-center items-start">
         {loading && (
-          <div className="mb-32px">
+          <div className="mb-32px mt-32px">
             <img className="w-70px" src="/images/spinner.gif" alt="" />
           </div>
         )}
