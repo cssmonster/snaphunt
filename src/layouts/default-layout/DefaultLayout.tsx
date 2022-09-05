@@ -27,7 +27,7 @@ const DefaultLayout: React.FC<{
           initSearchKeyword={initSearchKeyword}
         />
       </div>
-      <div className="mobile-645px:mt-140px mt-70px">{children}</div>
+      <div className="mobile-645px:mt-80px mt-70px">{children}</div>
       <div className="fixed  right-26px bottom-26px">
         <button
           onClick={onHandleMoveToTop}
