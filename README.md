@@ -13,4 +13,6 @@ npm install
 npm run dev
 ```
 
+It support all devices from mobile to desktop.
+
 cssmonster and cuonghv91 is my two github accounts. I used my laptop for dev, because its holiday here in Vietnam, another github account is from my PC in Hanoi
